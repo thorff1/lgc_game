@@ -1,30 +1,81 @@
-typedef struct _UNIT{
-  HP hitpoints;
-  PROFESSION primary;
-  PROFESSION secondary;
-  PROFESSION auxillary;
-  PROFESSION *profession_list[];
-  STATBAR *bView_bars[];
-  STATS unit_stats;
-  ITEM *inventory[];
-}UNIT;
+struct HP{
+	int current;
+	int max;
+};
 
-typedef struct _HP{
+struct STATBAR{
+	int current;
+	int maximum;
+};
 
-}HP;
+struct STATS{
+	int jump;
+	int move;
+	int speed;
+	int attack;
+	int magick;
+	int charisma;
+	int phys_def;
+	int mgk_def;
+	int ment_fort;
+	int phys_fort;
+	int gross;
+	int fine;
+	int creativity;
+	int ingenuity;
+	int charm;
+	int agility;
+	int adept;
+};
 
-typedef struct _PROFESSION{
+struct RACE{
+	int jump;
+	int speed;
+	int attack;
+	int magick;
+	int charisma;
+	int phys_def;
+	int mgk_def;
+	int ment_fort;
+	int phys_fort;
+	int gross;
+	int fine;
+	int creativity;
+	int ingenuity;
+	int charm;
+	int agility;
+	int adept;
+};
 
-}PROFESSION;
+enum METER_TYPE{SKILL, MANA, GENIUS};
 
-typedef struct _STATBAR{
+struct PROFESSION{
+	int jump;
+	int speed;
+	enum METER_TYPE *stat;
+	int attack;
+	int magick;
+	int charisma;
+	int phys_def;
+	int mgk_def;
+	int ment_fort;
+	int phys_fort;
+	int gross;
+	int fine;
+	int creativity;
+	int ingenuity;
+	int charm;
+	int agility;
+	int adept;
+};
 
-}STATBAR;
-
-typedef struct _STATS{
-
-}STATS;
-
-typedef struct _ITEM{
-
-}ITEM;
+struct UNIT{
+	struct HP *hitpoints;
+	struct PROFESSION *primary;
+	struct PROFESSION *secondary;
+	struct PROFESSION *auxillary;
+	struct STATBAR *prime_bar;
+	struct STATBAR *second_bar;
+	struct STATS *unit_stats;
+	struct RACE *race;
+};

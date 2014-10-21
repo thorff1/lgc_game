@@ -1,23 +1,15 @@
 #include "unit.h"
 
-typedef struct _BATTLEMAP{
-  MAPSQUARE *map[12];
-  atm atmosphere;
-  int map_units[][1][2]; //[unit numbers][unit pointers][x,y] 
-                         //i.e.:[5][1][2] would indicate a board with 5 units on it
-}BATTLEMAP;
-
-typedef struct _MAPSQUARE{
-  int height;
-  int location[2];
-  TERRAIN square_terrain;
+struct MAPSQUARE{
+  double height;
+  //TERRAIN square_terrain;
   bool isValid;
   bool isRendered;
-}MAPSQUARE;
+};
 
-typedef struct _TERRAIN{
+struct TERRAIN{
 
-}TERRAIN;
+};
 
 enum atm {
 	SUN_OUT,
@@ -33,3 +25,10 @@ enum atm {
 	FOG_IN,
 	NIGHT_IN,
 	INDOORS };
+
+struct BATTLEMAP{
+	struct MAPSQUARE *map[12][12];
+	enum atm atmosphere;
+	int map_units[20][1][2]; //[unit numbers][unit pointers][x,y] 
+	//i.e.:[5][1][2] would indicate a board with 5 units on it
+};
